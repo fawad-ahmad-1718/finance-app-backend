@@ -15,5 +15,8 @@ RUN cp .env.example .env
 RUN php artisan key:generate --force
 RUN php artisan migrate --seed --force
 
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 EXPOSE 8000
-CMD ["/bin/sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"]
+CMD ["/start.sh"]
