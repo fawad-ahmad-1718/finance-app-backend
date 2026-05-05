@@ -11,6 +11,7 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 RUN touch database/database.sqlite
+RUN cp .env.example .env
 RUN php artisan key:generate --force
 RUN php artisan migrate --seed --force
 
